@@ -41,4 +41,4 @@ jobs:
         if: steps.list-changed.outputs.changed == 'true'
 
       - name: Run chart-testing (install)
-        run: ct install --target-branch github.event.pull_request.head.ref --config ct.yaml
+        run: ct install --target-branch ${{ github.head_ref }} --config ct.yaml
