@@ -26,12 +26,6 @@ jobs:
         with:
           version: v3.3.0
 
-      - name: Echo out branch values
-        run: |
-          echo github.base_ref: ${{ github.base_ref }}
-          echo github.head_ref: ${{ github.head_ref }}
-          echo github.ref: ${{ github.ref }}
-
       - name: Run chart-testing (list-changed)
         id: list-changed
         run: |
@@ -46,5 +40,5 @@ jobs:
         uses: helm/kind-action@v1.1.0
         if: steps.list-changed.outputs.changed == 'true'
 
-#      - name: Run chart-testing (install)
-#        run: ct install --target-branch github.event.pull_request.head.ref --config ct.yaml
+      - name: Run chart-testing (install)
+        run: ct install --target-branch github.event.pull_request.head.ref --config ct.yaml
