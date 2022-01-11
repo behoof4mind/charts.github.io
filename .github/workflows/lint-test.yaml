@@ -40,7 +40,7 @@ jobs:
             echo "::set-output name=changed::true"
           fi
       - name: Run chart-testing (lint)
-        run: ct lint --target-branch ${{ github.head_ref }} --config ct.yaml
+        run: ct lint --target-branch pinniped --config ct.yaml
 
       - name: Create kind cluster
         uses: helm/kind-action@v1.1.0
